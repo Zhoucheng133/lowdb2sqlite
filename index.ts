@@ -22,6 +22,7 @@ const lowdb = await JSONFilePreset<List[]>('db/list.json', []);
 lowdb.read();
 const ls=lowdb.data;
 for(const item of ls){
+  // 注意修改这里的插入值
   const stmt = db.prepare("INSERT INTO list (id, title) VALUES (?, ?)");
   stmt.run(item.id, item.title);
 }
